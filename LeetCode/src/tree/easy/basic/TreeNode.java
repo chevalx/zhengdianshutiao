@@ -1,7 +1,5 @@
 package tree.easy.basic;
 
-import tree.easy.Solution94;
-
 class TreeNode {
     int val;
     TreeNode left;
