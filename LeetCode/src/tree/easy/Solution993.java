@@ -1,6 +1,5 @@
 package tree.easy;
 
-import com.sun.xml.internal.org.jvnet.mimepull.CleanUpExecutorFactory;
 
 public class Solution993 {
     private class TreeNode {
@@ -22,35 +21,45 @@ public class Solution993 {
         }
     }
 
+    private int xValue = 0;
+    private TreeNode xParent = null;
+    private int xDepth = 0;
+    private boolean xFound = false;
+
+    private int yValue = 0;
+    private TreeNode yParent = null;
+    private int yDepth = 0;
+    private boolean yFound = false;
+
     public boolean isCousins(TreeNode root, int x, int y) {
-        if (dfs(root, x, 0) == dfs(root, y, 0)) {
-            return isCommonParent(root, x, y);
-        }
-        return false;
+        this.xValue = x;
+        this.yValue = y;
+        dfs(root, 0, null);
+        return xDepth == yDepth && xParent != yParent;
     }
 
-    public int dfs(TreeNode root, int elem, int depth) {
+    public void dfs(TreeNode root, int depth, TreeNode parent) {
         if (root == null) {
-            return 0;
+            return;
         }
-        if (root.val == elem) {
-            return depth;
-        } else {
-            return Math.max(dfs(root.left, elem, ++depth), dfs(root.right, elem, ++depth));
-        }
-    }
 
-    public boolean isCommonParent(TreeNode root, int x, int y) {
-        if (root == null) {
-            return false;
+        if (root.val == xValue) {
+            xParent = parent;
+            xDepth = depth;
+            xFound = true;
         }
-        if (root.left != null && root.right != null) {
-            if ((root.left.val == x || root.right.val == y) || (root.left.val == y) || (root.right.val == x)) {
-                return true;
-            } else {
-                return false;
-            }
+        if (root.val == yValue) {
+            yParent = parent;
+            yDepth = depth;
+            yFound = true;
         }
-        return isCommonParent(root.left, x, y) && isCommonParent(root.right, x, y);
+        if (xFound & yFound) {
+            return;
+        }
+        dfs(root.left, depth + 1, root);
+        if (xFound & yFound) {
+            return;
+        }
+        dfs(root.right, depth + 1, root);
     }
 }
