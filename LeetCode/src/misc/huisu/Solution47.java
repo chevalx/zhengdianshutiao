@@ -1,7 +1,10 @@
 package misc.huisu;
 
+import annotations.HuiSu;
+
 import java.util.*;
 
+@HuiSu
 public class Solution47 {
     List<List<Integer>> result = new ArrayList<>();// 存放符合条件结果的集合
     LinkedList<Integer> path = new LinkedList<>();// 用来存放符合条件结果

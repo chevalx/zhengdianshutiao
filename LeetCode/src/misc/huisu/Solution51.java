@@ -1,5 +1,6 @@
 package misc.huisu;
 
+import annotations.HuiSu;
 import misc.HuaDongChuangKou.Solution438;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+@HuiSu
 public class Solution51 {
     private List<List<String>> solutions = new LinkedList<>();
 

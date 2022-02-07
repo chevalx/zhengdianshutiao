@@ -1,0 +1,33 @@
+# NIO
+
+## NIO 服务端编程模板
+### 方案一
+```java
+// 创建selector对象
+Selector selector = Selector.open();
+ServerSocketChannel serverChannel = ServerSocketChannel.open();
+serverChannel.bind(new InetSocketAddress(233));
+serverChannel.register(selector, OP_ACCEPT);
+serverChannel.configureBlocking(false);
+while (true) {
+    selector.select();
+    Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+    while (iterator.hasNext()) {
+        SelectionKey key = iterator.next();
+        iterator.remove();
+        if (key.isAcceptable()) {
+            // accept()函数里调用serverChannel.accept()得到与客户端连接的套接字
+            accept();
+        } else if (key.isReadable()) {
+        // read()函数内编写读取策略（即什么时候算读到一个完整的消息）
+        //或者至少在这个函数内读取流到buffer内，然后另起一个线程处理buffer数据
+            read();
+        } else if (key.isWritable()) {
+            // write()函数内编写什么时候有（注意“有”）消息要发送
+            // read() 函数处理完后，会把需要回复的消息放到一个队列中，write()函数需要去检测
+            // 队列中是否有
+            write();
+        }
+    }
+}
+```

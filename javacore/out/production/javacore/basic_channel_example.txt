@@ -1,0 +1,1 @@
+As mentioned above, you read data from a channel into a buffer, and write data from a buffer into a channel. Here is an illustration of that:

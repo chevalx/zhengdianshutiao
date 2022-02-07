@@ -1,5 +1,7 @@
 package misc.huisu;
 
+import annotations.HuiSu;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,6 +35,7 @@ import java.util.List;
  * 488. 祖玛游戏（困难）
  * 529. 扫雷游戏（困难）
  */
+@HuiSu
 public class Solution46 {
     private List<List<Integer>> res = new LinkedList<>();
 
