@@ -15,6 +15,7 @@ public class Solution55 {
         return dp2(nums, new boolean[nums.length]);
     }
 
+    // 超时
     public boolean dp(int[] nums, int curPos) {
         if (curPos == nums.length - 1) {
             return true;
