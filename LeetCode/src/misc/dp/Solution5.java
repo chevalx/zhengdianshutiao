@@ -10,34 +10,27 @@ public class Solution5 {
     }
 
     public String longestPalindrome(String s) {
-        int[] dp = new int[s.length()];
-        Arrays.fill(dp, 1);
-        for (int i = 0; i < dp.length; i++) {
-            int maxLength = 1;
-            for (int j = i; j >= 0; j--) {
-                if (s.charAt(i) == s.charAt(j)) {
-                    String subString = s.substring(j, i + 1);
-                    boolean palindrome = isPalindrome(subString);
-                    if (palindrome) {
-                        int length = i - j + 1;
-                        if (length > maxLength) {
-                            dp[i] = length;
-                        }
-                    }
-                }
-            }
+        String res = "";
+        for (int i = 0; i < s.length(); i++) {
+            // 以 s[i] 为中心的最长回文子串
+            String s1 = palindrome(s, i, i);
+            // 以 s[i] 和 s[i+1] 为中心的最长回文子串
+            String s2 = palindrome(s, i, i + 1);
+            // res = longest(res, s1, s2)
+            res = res.length() > s1.length() ? res : s1;
+            res = res.length() > s2.length() ? res : s2;
         }
-        int maxLongestIndex = 0;
-        for (int i = 0; i < dp.length; i++) {
-            if (dp[i] > dp[maxLongestIndex]) {
-                maxLongestIndex = i;
-            }
-        }
-        return s.substring(maxLongestIndex - dp[maxLongestIndex]+1, maxLongestIndex + 1);
+        return res;
     }
 
-    private boolean isPalindrome(String s) {
-        String reversed = new StringBuilder().append(s).reverse().toString();
-        return s.equals(reversed);
+    private String palindrome(String s, int l, int r) {
+        // 防止索引越界
+        while (l >= 0 && r < s.length()
+                && s.charAt(l) == s.charAt(r)) {
+            // 向两边展开
+            l--; r++;
+        }
+        // 返回以 s[l] 和 s[r] 为中心的最长回文串
+        return s.substring(l + 1, r);
     }
 }
