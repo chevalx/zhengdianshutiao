@@ -2,7 +2,8 @@ package misc.math;
 
 public class Solution461 {
     public static void main(String[] args) {
-        System.out.println();
+        String str = "abcdefg";
+        System.out.println(str.substring(5));
     }
 
     public int hammingDistance(int x, int y) {

@@ -49,6 +49,7 @@ public class Solution40 {
         }
 
         for (int i = startIndex; i < candidates.length; i++) {
+            // !used[i-1]表示没有用过i-1，即当前的i是新开始遍历以i为根的树而遍历到的，而不是在i-1那棵树下遍历到的
             if (i > 0 && candidates[i] == candidates[i - 1] && !used[i - 1]) {
                 continue;
             }

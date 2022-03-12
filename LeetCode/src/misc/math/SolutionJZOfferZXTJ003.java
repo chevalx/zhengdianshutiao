@@ -1,8 +1,8 @@
 package misc.math;
 
-public class SolutionZJOfferZXTJ003 {
+public class SolutionJZOfferZXTJ003 {
     public static void main(String[] args) {
-        System.out.println(new SolutionZJOfferZXTJ003().countOnes(5));
+        System.out.println(new SolutionJZOfferZXTJ003().countOnes(5));
     }
 
     public int[] countBits(int n) {

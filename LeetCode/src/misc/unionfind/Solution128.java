@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Solution128 {
     public static void main(String[] args) {
         new Solution128().longestConsecutive(new int[]{1,2,3,4,5,6,7});
+        String str = " as";
     }
 
     public int longestConsecutive(int[] nums) {
