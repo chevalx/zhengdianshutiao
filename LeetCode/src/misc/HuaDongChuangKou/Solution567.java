@@ -12,7 +12,6 @@ public class Solution567 {
         }
         int left = 0, right = 0;
         int valid = 0;
-        int start = 0, len = Integer.MAX_VALUE;
         while (right < s2.length()) {
             char c = s2.charAt(right);
             right++;

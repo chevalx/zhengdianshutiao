@@ -1,5 +1,9 @@
 package misc.dfs;
 
+import annotations.Hash;
+
+import java.util.HashMap;
+
 public class SolutionJZOfferZXTJ105 {
     public static void main(String[] args) {
         new SolutionJZOfferZXTJ105().maxAreaOfIsland(new int[][]{{0,0,1,0,0,0,0,1,0,0,0,0,0},

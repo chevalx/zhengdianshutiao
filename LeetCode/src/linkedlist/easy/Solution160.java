@@ -15,17 +15,14 @@ public class Solution160 {
         if (headA == null || headB == null) {
             return null;
         }
-
         ListNode cursorA = headA;
         ListNode cursorB = headB;
-
         while (cursorA != cursorB) {
             if (cursorA != null) {
                 cursorA = cursorA.next;
             } else {
                 cursorA = headB;
             }
-
             if (cursorB != null) {
                 cursorB = cursorB.next;
             } else {

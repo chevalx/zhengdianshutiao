@@ -9,32 +9,32 @@ import java.util.List;
 
 public class Solution102 {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        if (root==null){
+        if (root == null) {
             return new ArrayList<>();
         }
-        List<List<Integer>> res = new ArrayList<>();
+        List<List<Integer>> res = new LinkedList<>();
         Deque<TreeNode> queue = new LinkedList<>();
-        queue.push(root);
-
+        queue.offer(root);
         while (!queue.isEmpty()) {
-            List<TreeNode> level = new ArrayList<>();
-            List<Integer> levelValue = new ArrayList<>();
+            List<TreeNode> levelBuffer = new ArrayList<>();
+            List<Integer> valueBuffer = new ArrayList<>();
             while (!queue.isEmpty()) {
-                TreeNode cur = queue.pollFirst();
-                level.add(cur);
+                TreeNode node = queue.pollFirst();
+                levelBuffer.add(node);
+                valueBuffer.add(node.val);
             }
-            for (TreeNode treeNode : level) {
-                levelValue.add(treeNode.val);
-                if (treeNode.left != null) {
-                    queue.add(treeNode.left);
+            for (TreeNode children : levelBuffer) {
+                TreeNode left = children.left;
+                TreeNode right = children.right;
+                if (left != null) {
+                    queue.offer(left);
                 }
-                if (treeNode.right != null) {
-                    queue.add(treeNode.right);
+                if (right != null) {
+                    queue.offer(right);
                 }
             }
-            res.add(levelValue);
+            res.add(valueBuffer);
         }
-
         return res;
     }
 }

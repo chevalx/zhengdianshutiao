@@ -6,6 +6,8 @@ import annotations.DP;
 // LCS 问题
 public class Solution1143 {
     public static void main(String[] args) {
+
+
         System.out.println(new Solution1143().longestCommonSubsequence("abcde", "acf"));
     }
 

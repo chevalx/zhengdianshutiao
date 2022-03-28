@@ -5,24 +5,22 @@ import java.util.Map;
 
 public class Solution3 {
     public int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> window = new HashMap<>();
-        int start = 0, length = Integer.MIN_VALUE;
-        int left = 0, right = 0;
-        while (right < s.length()) {
-            char c = s.charAt(right);
+        int res = 0;
+        int right = 0;
+        int left = 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int n = s.length();
+        while (right < n) {
+            Character c = s.charAt(right);
+            map.put(c, map.getOrDefault(c, 0) + 1);
             right++;
-            window.put(c, window.getOrDefault(c, 0) + 1);
-            while (window.get(c) > 1) {
-                char d = s.charAt(left);
+            while (map.get(c) > 1) {
+                map.put(s.charAt(left), map.get(s.charAt(left)) - 1);
                 left++;
-                window.put(d, window.getOrDefault(d, 0) - 1);
             }
-            // 寻找最长应该在内循环外头更新答案
-            if (length < right - left) {
-                length = right - left;
-            }
+            res = Math.max(right - left, res);
         }
-        return length==Integer.MIN_VALUE ? 0 : length;
+        return res;
     }
 
     public static void main(String[] args) {

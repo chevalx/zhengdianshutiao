@@ -20,10 +20,12 @@ public class Solution200 {
         };
         System.out.println(new Solution200().numIslands(grid));
     }
-    
+
     public int numIslands(char[][] grid) {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (grid[i][j] == '1') {
                     backtrack(grid, i, j);
                     count++;
@@ -34,10 +36,7 @@ public class Solution200 {
     }
 
     private void backtrack(char[][] grid, int x, int y) {
-        if (x > grid.length - 1 || x < 0 || y > grid[0].length - 1 || y < 0) {
-            return;
-        }
-        if (grid[x][y] == '0') {
+        if (x < 0 || x >= grid.length || y < 0 || y > grid[0].length || grid[x][y] == '0') {
             return;
         }
         if (grid[x][y] == '1') {
