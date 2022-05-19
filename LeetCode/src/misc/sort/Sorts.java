@@ -46,7 +46,9 @@ public class Sorts {
         }
     }
 
-
+    /**
+     * 快排的应用，见{@link array.medium.Solution215}
+     */
     public void quickSort(int[] nums, int lo, int hi) {
         if (lo >= hi) {
             return;
@@ -57,28 +59,23 @@ public class Sorts {
     }
 
     private int partition(int[] nums, int lo, int hi) {
-        int i = lo;
-        int j = hi+1;
         int pivot = nums[lo];
+        int i = lo, j = hi + 1;
         while (true) {
-            while (nums[++i]<pivot) {
-                if (i >= hi) {
-                    break;
-                }
+            while (nums[++i] < pivot) {
+                if (i >= hi) break;
             }
-            while (nums[--j]>pivot) {
-                if (j <= lo) {
-                    break;
-                }
+            while (nums[--j] > pivot) {
+                if (j <= lo) break;
             }
-            if (i>=j) break;
+            if (i >= j) break;
             int tmp = nums[i];
-            nums[i]=nums[j];
+            nums[i] = nums[j];
             nums[j] = tmp;
         }
-        int tmp = nums[lo];
-        nums[lo] = nums[j];
-        nums[j] = tmp;
+        int tmp = nums[j];
+        nums[j] = nums[lo];
+        nums[lo] = tmp;
         return j;
     }
 

@@ -3,6 +3,13 @@ package misc.HuaDongChuangKou;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 该题较为经典，codetop上排第2
+ * follow up :
+ * {@link misc.dfs.Solution395}
+ * {@link Solution424}
+ * {@link Solution2024}
+ */
 public class Solution3 {
     public int lengthOfLongestSubstring(String s) {
         int res = 0;
